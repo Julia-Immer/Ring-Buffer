@@ -1,0 +1,5 @@
+/home/jovyan/RingBuffer/build/CMakeFiles/rebuild_cache.dir
+/home/jovyan/RingBuffer/build/CMakeFiles/edit_cache.dir
+/home/jovyan/RingBuffer/build/CMakeFiles/test.dir
+/home/jovyan/RingBuffer/build/CMakeFiles/run_app.dir
+/home/jovyan/RingBuffer/build/CMakeFiles/run_tests.dir

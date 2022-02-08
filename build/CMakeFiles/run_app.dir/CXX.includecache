@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jovyan/RingBuffer/app/main.cpp
+iostream
+-
+../code/RingBuffer.h
+/home/jovyan/RingBuffer/code/RingBuffer.h
+
+/home/jovyan/RingBuffer/code/RingBuffer.cpp
+RingBuffer.h
+/home/jovyan/RingBuffer/code/RingBuffer.h
+
+/home/jovyan/RingBuffer/code/RingBuffer.h
+memory
+-
+string
+-
+vector
+-
+iostream
+-
+cstdint
+-
+
