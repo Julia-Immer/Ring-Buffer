@@ -20,7 +20,7 @@ If you have the compile shortcut ctrl+shift+B added in your default build tasks,
 ### Linux/Mac
 In the terminal and run the following commands:
 
-`~$ cd LinkedList` <br>
+`~$ cd Ring-Buffer` <br>
 `~$ cd build` <br>
 `~$ cmake ..` <br>
 `~$ make` <br>
