@@ -1,43 +1,22 @@
 # RingBuffer
-<br>
+   
 
 ## How To Compile And Run RingBuffer
----
-<br>
-
+   
 ### Dependencies
+
 Both gcc and cmake are required to compile RingBuffer.  The VScode environment in JupyterHub only needs to have the C/C++ extension installed to provide your dependencies.
+  
+### Compiling the code and running tests
 
+The project can be easily compiled by running the included bash script:
+build-n-test.sh
 
-### VScode on JupyterHub
-Upload the RingBuffer folder with the project files to JupyterHub.
+`$ bash build-n-test.sh`  
 
-Open the VScode app inside JupyterHub and hit cmd+K+O to select and open the RingBuffer folder.
-
-If you have the compile shortcut ctrl+shift+B added in your default build tasks, you can compile the code with it.  Otherwise, it is easy to use the debugger to compile, or the instructions below.
-
-
-### Linux/Mac
-In the terminal and run the following commands:
-
-`~$ cd RingBuffer` <br>
-`~$ cd build` <br>
-`~$ cmake ..` <br>
-`~$ make` <br>
-
-The project is now compiled.
-
-
-### Tests
-In VScode you can easily run tests by clicking on the debugger and pressing "run tests".  Otherwise you can move into the build folder and run the terminal command:
-
-`~$ ./run_tests` <br>
-<br>
-<br>
-
+    
 ## About This Project
----
-
+  
 The RingBuffer project here provides a cicular array data structure in which sound samples, or other kinds of data, could be stored. The nature of the circular array, or ring buffer, allows reading and writing to happen simultaneously, and at different rates, enabling many applications in the area of audio programming.  Some of those include the looping sound effect this program implements, as well as other audio applications like playback, continuous buffering for large sound files, filtering and editing audio.
 
 The Ring Buffer abstract data type posesses a "pointer" to the last written to slot in the buffer, as well as a read "pointer" which keeps track of the last read element in the buffer.  The concept of a pointer in this case is abstract.  I have chosen to implement them with simple integer variables which track their respective read and write indices.
@@ -57,19 +36,16 @@ In future applications, the looping algortithm could be used to either loop audi
 loopBuffer() does not start at the first sample in the buffer but instead intelligently starts at the first readable sample.  This avoids looping over old samples that were previously read out of the buffer, or random values in the unused portions of the buffer.
 
 The test file test_RingBuffer.cpp in the tests folder contains a number of tests, each testing a member function of the RingBuffer class.
-<br>
-<br>
 
-
+  
 ### RingBuffer Attributes
-- sample_type: The data type of samples. Defined to be float, but most likely would be Uint 8 in practice with real sound samples.
-- buffer: A vector which stores samples, or sample_type values
+  
+- SAMPLE_TYPE: The data type of samples. Defined to be float, but most likely would be Uint 8 in practice with real sound samples.
+- _buffer: A vector which stores samples, or sample_type values
 - _read_tail: Private. Keeps track of the index of the last read sample. It is initialized to -1 when none have been read.
 - _write_head: Private. Keeps track of the index of the last written to buffer element and is initialized to -1.
-- samples_buffered: Keeps track of the number of unread samples in the buffer. Initialized to 0.
-<br>
-<br>
-
+- _samples_buffered: Keeps track of the number of unread samples in the buffer. Initialized to 0.  
+    
 
 ## Resources
 ---
