@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/run_tests.dir/code/ProjectExtras.cpp.o"
   "CMakeFiles/run_tests.dir/code/RingBuffer.cpp.o"
+  "CMakeFiles/run_tests.dir/code/RingBuffer.cpp.o.d"
   "CMakeFiles/run_tests.dir/tests/test_RingBuffer.cpp.o"
+  "CMakeFiles/run_tests.dir/tests/test_RingBuffer.cpp.o.d"
   "run_tests"
   "run_tests.pdb"
 )
