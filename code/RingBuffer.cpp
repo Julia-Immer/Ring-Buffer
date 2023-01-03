@@ -22,7 +22,7 @@ bool RingBuffer::isFull() {
 
 bool RingBuffer::writeSample(sample_type sample){
     //full buffer case
-    if (samples_buffered == _buffer_capacity) {
+    if (isFull()) {
         return false; //we can't write any more samples
     }
 
@@ -37,7 +37,7 @@ bool RingBuffer::writeSample(sample_type sample){
 sample_type RingBuffer::readSample() {
     sample_type sample;
 
-   if (samples_buffered == 0) {
+   if (isEmpty()) {
        sample = EMPTY_BUFFER;
     }
     else {
@@ -51,20 +51,20 @@ sample_type RingBuffer::readSample() {
 
 
 shared_ptr<RingBuffer> RingBuffer::loopBuffer(double num_times) {
-    int new_size = num_times*(this->samples_buffered); //calculating new, larger buffer size
+    int new_size = num_times*(samples_buffered); //calculating new, larger buffer size
 
     //store current read index
-    int start_i = this->getReadTail();
+    int start_i = getReadTail();
     //store current num samples in buffer
-    int readable_samples = this->samples_buffered;
+    int readable_samples = samples_buffered;
 
     //create new buffer with new_size where looped samples will go
     shared_ptr<RingBuffer> loop_b (new RingBuffer);
     loop_b->setBufferCapacity(new_size);
 
     //Empty buffer case
-    if (this->isEmpty()) {
-        loop_b->setBufferCapacity(num_times*this->getBufferCapacity()); //set capacity to looping factor times empty capacity
+    if (isEmpty()) {
+        loop_b->setBufferCapacity(num_times*getBufferCapacity()); //set capacity to looping factor times empty capacity
     }
     else { //orig buffer has samples to copy and loop
 
@@ -72,18 +72,18 @@ shared_ptr<RingBuffer> RingBuffer::loopBuffer(double num_times) {
         while (loop_b->samples_buffered < new_size) {
 
             //get each sample from old buffer and reset read and samples_buffered when you reach buffer end
-            if (this->samples_buffered == 0) {
-                this->_read_tail = start_i;
-                this->samples_buffered = readable_samples;
+            if (isEmpty()) {
+                _read_tail = start_i;
+                samples_buffered = readable_samples;
             }
-            sample_type sample = this->readSample(); //get sample
+            sample_type sample = readSample(); //get sample
 
             loop_b->writeSample(sample); //copy sample into new buffer
         }
 
         //in case we want to loop the orig buffer again, we'll reset the read and samples elements
-        this->_read_tail = start_i;
-        this->samples_buffered = readable_samples;
+        _read_tail = start_i;
+        samples_buffered = readable_samples;
     }
 
     return loop_b;

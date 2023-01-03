@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -isystem /Users/admin/workspace/RingBuffer/build/googletest-src/googletest/include -isystem /Users/admin/workspace/RingBuffer/build/googletest-src/googletest
 
-CXX_FLAGS =  -std=c++11 -Wall -std=c++11 -Wall -std=c++11 -Wall -std=c++11 -Wall -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk
+CXX_FLAGS =  -std=c++11 -Wall -std=c++11 -Wall -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk
 
